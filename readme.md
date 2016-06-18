@@ -1,3 +1,7 @@
+# Tienda Larabel
+
+Proyecto desarrollado en un curso de laravel.
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)

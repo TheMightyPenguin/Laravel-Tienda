@@ -18,6 +18,7 @@ class TruncateAllTables extends Seeder
                 continue;
             DB::table($name)->truncate();
         }
+        
         DB::statement("SET foreign_key_checks=1");
     }
 }
