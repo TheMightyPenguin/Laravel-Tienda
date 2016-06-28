@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(TruncateAllTables::class)
+
         $this->call(EstatusTableSeeder::class);
         $this->call(TipousuarioTableSeeder::class);
         $this->call(UbicacionTableSeeder::class);

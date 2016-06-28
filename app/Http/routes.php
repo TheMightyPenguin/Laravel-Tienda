@@ -2,6 +2,9 @@
 
 use App\Usuario;
 use App\Producto;
+use App\Categoria;
+use App\Marca;
+use App\Ubicacion;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +17,18 @@ use App\Producto;
 |
 */
 
-Route::get('/', function() {
-    return view('welcome');
+Route::get('/', 'UsuarioController@inicio');
+
+Route::get('info', function() {
+	return view('pages.info');
+});
+
+Route::get('contacto', function() {
+	return view('pages.contacto');
 });
 
 Route::get('productos', function() {
-    $productos = Producto::paginate(4);
-    return view('productos/list', compact('productos'));
+	return view('productos.list');
 });
 
 Route::get('prueba', function() {
