@@ -33,7 +33,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'heroku'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -87,15 +87,15 @@ return [
 
         'heroku' => [
             'driver' => 'pgsql',
-            'host' => $host,
-            'port' => env('DB_PORT', '5432'),
-            'database' $database,
-            'username' => $username,
-            'password' => $password,
+            'host' => 'ec2-54-225-93-34.compute-1.amazonaws.com',
+            'port' => '5432',
+            'database' 'd4ppfu95p9si42',
+            'username' => 'bfgqyrasmuxlww',
+            'password' => 's9Bu51VWiN1IY9UtCYmxY6e1ft',
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
-        ],
+        ]
 
     ],
 
