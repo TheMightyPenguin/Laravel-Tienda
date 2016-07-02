@@ -1,5 +1,6 @@
 <?php
 
+use App\Estatus;
 use Illuminate\Database\Seeder;
 
 class EstatusTableSeeder extends Seeder
@@ -11,12 +12,7 @@ class EstatusTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('estatus')->insert([
-            'nombre' => 'activo'
-        ]);
-
-        DB::table('estatus')->insert([
-            'nombre' => 'inactivo'
-        ]);
+        Estatus::create(['nombre' => 'activo']);
+        Estatus::create(['nombre' => 'inactivo']);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\TipoUsuario;
 use Illuminate\Database\Seeder;
 
 class TipousuarioTableSeeder extends Seeder
@@ -11,16 +12,8 @@ class TipousuarioTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tipousuario')->insert([
-            'nombre' => 'administrador'
-        ]);
-
-        DB::table('tipousuario')->insert([
-            'nombre' => 'vendedor'
-        ]);
-
-        DB::table('tipousuario')->insert([
-            'nombre' => 'comprador'
-        ]);
+        TipoUsuario::create(['nombre' => 'administrador']);
+        TipoUsuario::create(['nombre' => 'vendedor']);
+        TipoUsuario::create(['nombre' => 'comprador']);
     }
 }

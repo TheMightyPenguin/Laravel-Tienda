@@ -1,6 +1,7 @@
 <?php
 
 use App\Usuario;
+use App\Producto;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,16 @@ Route::get('/', function() {
     return view('welcome');
 });
 
+Route::get('productos', function() {
+    $productos = Producto::paginate(4);
+    return view('productos/list', compact('productos'));
+});
+
 Route::get('prueba', function() {
 	$usuarios = Usuario::all();
 	$usuario2 = Usuario::findOrFail(2);
 	$drFreddie = Usuario::where('name', '=' , 'Dr. Freddie Fadel MD');
-	
+
 	// dd($usuario2);
 	dd($usuario2);
 
