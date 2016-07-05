@@ -18,17 +18,20 @@ use App\Ubicacion;
 */
 
 Route::get('/', 'UsuarioController@inicio');
+Route::get('productos', 'UsuarioController@productos');
+Route::get('contacto', 'UsuarioController@contacto');
+Route::get('nosotros', 'UsuarioController@nosotros');
 
-Route::get('info', function() {
-	return view('pages.info');
+Route::group(['prefix' => 'admin'], function() {
+	Route::get('/', function(){
+		return view('admin.layout');
+	})->name('main');
+
+	Route::resource('estatus', 'EstatusController');
 });
 
-Route::get('contacto', function() {
-	return view('pages.contacto');
-});
-
-Route::get('productos', function() {
-	return view('productos.list');
+Route::get('admin', function() {
+	return view('admin.layout');
 });
 
 Route::get('prueba', function() {
@@ -46,3 +49,7 @@ Route::get('usertest', function() {
 	$usuarios = Usuario::all();
 	return view('usertest', compact('usuarios'));
 });
+
+Route::get('form', function(){
+	return view('prueba');
+})->name('form');

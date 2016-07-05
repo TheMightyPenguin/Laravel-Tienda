@@ -32,7 +32,7 @@
 
 		<div class="container">
 
-			@yield('cuerpo')
+			@yield('content')
 
 			<hr>
 

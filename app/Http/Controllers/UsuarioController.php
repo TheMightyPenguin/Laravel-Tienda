@@ -25,5 +25,17 @@ class UsuarioController extends Controller
     		compact('productos', 'categorias', 'marcas', 'ubicaciones'));
     }
 
+    public function contacto() {
+    	return view('pages.contacto');
+    }
 
+    public function nosotros() {
+    	return view('productos.list');
+    }
+
+    public function productos() {
+    	$productos = Producto::paginate(9);
+    	$categorias = Categoria::all();
+    	return view('productos.list');
+    }
 }
