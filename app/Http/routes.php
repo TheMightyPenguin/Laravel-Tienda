@@ -17,10 +17,10 @@ use App\Ubicacion;
 |
 */
 
-Route::get('/', 'UsuarioController@inicio');
-Route::get('productos', 'UsuarioController@productos');
-Route::get('contacto', 'UsuarioController@contacto');
-Route::get('nosotros', 'UsuarioController@nosotros');
+Route::get('/', 'VistaUsuarioController@inicio');
+Route::get('productos', 'VistaUsuarioController@productos');
+Route::get('contacto', 'VistaUsuarioController@contacto');
+Route::get('nosotros', 'VistaUsuarioController@nosotros');
 
 Route::group(['prefix' => 'admin'], function() {
 	Route::get('/', function(){
@@ -28,6 +28,9 @@ Route::group(['prefix' => 'admin'], function() {
 	})->name('main');
 
 	Route::resource('estatus', 'EstatusController');
+	Route::get('estatus/{id}/eliminar', 'EstatusController@eliminar')->name('admin.estatus.eliminar');
+
+	Route::resource('usuarios', 'UsuariosController');
 });
 
 Route::get('admin', function() {

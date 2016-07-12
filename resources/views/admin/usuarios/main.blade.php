@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>Estatus
-	<a href=" {{ url('admin/estatus/create') }} " class="btn btn-primary">
+	<a href=" {{ route('admin.usuarios.create') }} " class="btn btn-primary">
 		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		Nuevo
 	</a>
@@ -14,21 +14,35 @@
 	  	<tr>
 	    	<th>id</th>
 	    	<th>Nombre</th>
+	    	<th>Apellido</th>
+	    	<th>Email</th>
+	    	<th>Telefono</th>
+	    	<th>Contraseña</th>
+	    	<th>Estatus</th>
+			<th>Tipo</th>
+			<th>Ubicacion</th>
 	    	<th>Actividades</th>
 	  	</tr>
 	</thead>
 	<tbody>
-		@foreach($estatuses as $estatus)
+		@foreach($usuarios as $usuario)
 	  	<tr>
-	    	<td>{{ $estatus->id }}</td>
-	    	<td>{{ $estatus->nombre }}</td>
+	    	<td>{{ $usuario->id }}</td>
+	    	<td>{{ $usuario->nombre }}</td>
+	    	<td>{{ $usuario->apellido }}</td>
+	    	<td>{{ $usuario->email }}</td>
+	    	<td>{{ $usuario->telefono }}</td>
+	    	<td>{{ $usuario->contraseña }}</td>
+	    	<td>{{ $usuario->estatus->nombre }}</td>
+	    	<td>{{ $usuario->tipousuario->nombre }}</td>
+	    	<td>{{ $usuario->ubicacion->nombre }}</td>
 	    	<td>
 	    		<div class="btn-group">
-	    			<a href="{{ route('admin.estatus.edit', $estatus->id) }}" type="button" class="btn btn-primary">
+	    			<a href="{{ route('admin.usuarios.edit', $usuario->id) }}" type="button" class="btn btn-primary">
 	    				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 	    				Editar
 	    			</a>
-	    			{!! Form::open(['route' => ['admin.estatus.destroy', $estatus], 
+	    			{!! Form::open(['route' => ['admin.usuarios.destroy', $usuario], 
 	    			                'method' => 'delete', 'class' => 'form-inline']) !!}	    		
 	    				
 	    				<button class="btn btn-danger" type="submit">
