@@ -10,7 +10,7 @@ class Usuario extends Model
     protected $table = "usuarios";
 
     // para asignacion masiva
-    protected $fillable = ['nombre', 'apellido', 'email', 'telefono', 'password', 'idestatus', 'idtipousuario'];
+    protected $fillable = ['nombre', 'apellido', 'email', 'telefono', 'password', 'idestatus', 'idtipousuario', 'idubicacion'];
 
     public function tipousuario()
     {
@@ -20,6 +20,11 @@ class Usuario extends Model
     public function estatus()
     {
     	return $this->belongsTo(Estatus::class, 'idestatus', 'id');
+    }
+
+    public function ubicacion()
+    {
+        return $this->belongsTo(Ubicacion::class, 'idubicacion', 'id');
     }
 
     public function productos()

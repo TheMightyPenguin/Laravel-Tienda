@@ -8,7 +8,7 @@
         <a href="#">Categorias</a>
     </li>
     <li>
-        <a href="#">Usuarios</a>
+        <a href="{{ route('admin.usuarios.index') }}">Usuarios</a>
     </li>
     <li>
         <a href="#">Productos</a>

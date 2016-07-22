@@ -55,8 +55,16 @@ class EstatusController extends Controller
                              ->withErrors($validacion->errors())
                              ->withInput($data);
         }
+        
+        // $data = Estatus::create($data);
+        $data = new Estatus($data);
+        $data->save();
 
-        dd($request->all());
+        $request->session()->flash('mensaje', 'Estatus registrado correctamente');
+        
+        return redirect()->to(route('admin.estatus.index'));
+                       /*->with('mensaje', 'Estatus registrado correctamente');*/
+
     }
 
     /**
@@ -78,7 +86,8 @@ class EstatusController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estatus = Estatus::findOrFail($id);
+        return view('admin.estatus.form', ['estatus' => $estatus]);
     }
 
     /**
@@ -90,7 +99,26 @@ class EstatusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'nombre' => 'required|unique:estatus|max:10|min:5'
+        ];
+
+        $data = $request->all();
+
+        $validacion = Validator::make($data ,$rules);
+
+        if($validacion->fails()){
+            return redirect()->back()
+                             ->withErrors($validacion->errors())
+                             ->withInput($data);
+        }
+        
+        Estatus::find($id)->update($request->all());
+
+        $request->session()->flash('mensaje', 'Estatus actualizado correctamente');
+
+        return redirect()->to(route('admin.estatus.index'));
+
     }
 
     /**
@@ -101,6 +129,20 @@ class EstatusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $estatus = Estatus::find($id);
+        $estatus->delete();
+
+        session()->flash('mensaje', "Estatus eliminado correctamente");
+
+        return redirect()->to(route('admin.estatus.index'));
+    }
+
+    public function eliminar($id){
+        $estatus = Estatus::find($id);
+        $estatus->delete();
+
+        session()->flash('mensaje', "Estatus eliminado correctamente");
+
+        return redirect()->to(route('admin.estatus.index'));
     }
 }
