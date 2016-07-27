@@ -12,6 +12,8 @@ use App\Ubicacion;
 use App\TipoUsuario;
 use App\Estatus;
 
+use Validator;
+
 class UsuariosController extends Controller
 {
     /**
@@ -33,8 +35,12 @@ class UsuariosController extends Controller
     public function create()
     {
         $estatus = Estatus::lists('nombre', 'id');
-        return view('admin.usuarios.form',
-            ['estatus' => $estatus]);
+        $tiposUsuario = TipoUsuario::lists('nombre', 'id');
+        $ubicaciones = Ubicacion::lists('nombre', 'id');
+        return view(
+            'admin.usuarios.form',
+            compact('estatus', 'tiposUsuario', 'ubicaciones')
+        );
     }
 
     /**
@@ -45,7 +51,35 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'nombre'   => 'required',
+            'apellido' => 'required',
+            'email'    => 'required|email|unique:usuarios',
+            'telefono' => 'required',
+            'password' => 'required|min:8',
+            'idtipousuario' => 'required',
+            'idubicacion' => 'required',
+            'idestatus' => 'required',
+        ];
+
+        $data = $request->all();
+
+        $validacion = Validator::make($data ,$rules);
+
+        if($validacion->fails()){
+            return redirect()->back()
+                             ->withErrors($validacion->errors())
+                             ->withInput($data);
+        }
+
+        // dd($data);
+
+        // $data = Estatus::create($data);
+        $data = new Usuario($data);
+        $data->save();
+
+        return redirect()->to(route('admin.usuarios.index'))
+                         ->with('mensaje', 'Usuario registrado correctamente');
     }
 
     /**
@@ -67,7 +101,13 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estatus = Estatus::lists('nombre', 'id');
+        $tiposUsuario = TipoUsuario::lists('nombre', 'id');
+        $ubicaciones = Ubicacion::lists('nombre', 'id');
+
+        $usuario = Usuario::findOrFail($id);
+        return view('admin.usuarios.form',
+                    compact('usuario', 'estatus', 'tiposUsuario', 'ubicaciones'));
     }
 
     /**
@@ -79,7 +119,25 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'email'    => 'email',
+            'password' => 'min:8',
+        ];
+
+        $data = $request->all();
+
+        $validacion = Validator::make($data ,$rules);
+
+        if($validacion->fails()){
+            return redirect()->back()
+                             ->withErrors($validacion->errors())
+                             ->withInput($data);
+        }
+
+        Usuario::find($id)->update($data);
+
+        return redirect()->to(route('admin.usuarios.index'))
+                         ->with('mensaje', 'Usuario actualizado correctamente');
     }
 
     /**
@@ -90,6 +148,9 @@ class UsuariosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = Usuario::findOrFail($id);
+        $usuario->delete();
+        return redirect()->to(route('admin.usuarios.index'))
+                         ->with('mensaje', 'Usuario eliminado correctamente');
     }
 }

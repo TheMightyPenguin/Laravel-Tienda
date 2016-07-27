@@ -13,6 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') 	 }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-select.min.css') 	 }}" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
@@ -32,7 +33,7 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            @include('admin.menu');
+            @include('admin.menu')
         </div>
         <!-- /#sidebar-wrapper -->
 
@@ -48,14 +49,14 @@
 			<div class="col-md-12">
 				@yield('content')
 			</div>
-			
+
 			<!--
 			<hr>
 			<div class="container">
 				<p>&copy; 2016 - Victor</p>
 			</div>-->
 		</div><!-- /#page-content-wrapper -->
-    
+
     </div><!-- /#wrapper -->
 
     <!-- jQuery -->
@@ -63,6 +64,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
 
     <!-- Menu Toggle Script -->
     <script>

@@ -19,7 +19,8 @@ class CreateProductosTable extends Migration
             $table->foreign('idestatus')->references('id')->on('estatus');
 
             $table->integer('idusuario')->unsigned();
-            $table->foreign('idusuario')->references('id')->on('users');
+            $table->foreign('idusuario')->references('id')->on('users')
+                                                          ->onDelete('cascade');
 
             $table->integer('idcategoria')->unsigned();
             $table->foreign('idcategoria')->references('id')->on('categorias');

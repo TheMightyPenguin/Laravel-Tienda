@@ -26,10 +26,12 @@ class CreateEstatusTable extends Migration
      */
     public function down()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        // DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::disableForeignKeyConstraints();
 
         Schema::drop('estatus');
 
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        Schema::enableForeignKeyConstraints();
+        // DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
