@@ -44,7 +44,7 @@
         	</div>
 
         	@include('mensajes.errores')
-            @include('mensajes.informativo')
+          @include('mensajes.informativo')
 
 			<div class="col-md-12">
 				@yield('content')

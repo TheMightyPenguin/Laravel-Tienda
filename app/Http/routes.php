@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('estatus/{id}/eliminar', 'EstatusController@eliminar')->name('admin.estatus.eliminar');
 
 	Route::resource('usuarios', 'UsuariosController');
+	Route::resource('productos', 'ProductosController');
 });
 
 Route::get('admin', function() {

@@ -55,13 +55,13 @@ class EstatusController extends Controller
                              ->withErrors($validacion->errors())
                              ->withInput($data);
         }
-        
+
         // $data = Estatus::create($data);
         $data = new Estatus($data);
         $data->save();
 
         $request->session()->flash('mensaje', 'Estatus registrado correctamente');
-        
+
         return redirect()->to(route('admin.estatus.index'));
                        /*->with('mensaje', 'Estatus registrado correctamente');*/
 
@@ -112,7 +112,7 @@ class EstatusController extends Controller
                              ->withErrors($validacion->errors())
                              ->withInput($data);
         }
-        
+
         Estatus::find($id)->update($request->all());
 
         $request->session()->flash('mensaje', 'Estatus actualizado correctamente');
