@@ -2,14 +2,15 @@
 
 @section('content')
 
-@if (isset($usuario))
+@if (isset($producto))
 	<h1>Editar producto</h1>
 	<hr>
-	{!! Form::model($usuario, ['route' => ['admin.productos.update', $producto], 'method' => 'patch']) !!}
+	{!! Form::model($producto, 
+		['route' => ['admin.productos.update', $producto], 'method' => 'patch', 'class' => 'form-horizontal']) !!}
 @else
 	<h1>Crear producto</h1>
 	<hr>
-	{!! Form::open(['route' => 'admin.productos.store']) !!}
+	{!! Form::open(['route' => 'admin.productos.store', 'class' => 'form-horizontal']) !!}
 @endif
 
 		<div class="form-group">
@@ -26,7 +27,7 @@
 		<fieldset class="form-group">
 			{!! Form::label('precio', 'Precio') !!}
 			{!! Form::text('precio', null, ['class' => 'form-control', 'placeholder' => 'Precio']) !!}
-  	</fieldset>
+  		</fieldset>
 
 		<div class="form-group">
 			{!! Form::label('descripcion', 'Email') !!}

@@ -14,6 +14,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') 	 }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-select.min.css') 	 }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css')     }}" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
@@ -65,6 +66,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('js/admin.js') }}"></script>
 
     <!-- Menu Toggle Script -->
     <script>

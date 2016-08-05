@@ -40,19 +40,18 @@
 	    	<td>{{ $producto->tipoProducto->nombre }}</td>
 	    	<td>
 	    		<div class="btn-group">
-	    			<a href='{{ route('admin.productos.edit', $producto->id) }}' type="button" class="btn btn-primary">
+	    			<a href="{{ route('admin.productos.edit', $producto->id) }}" type="button" class="btn btn-primary">
 	    				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 	    				Editar
 	    			</a>
-	    			{!! Form::open(['route' => ['admin.productos.destroy', $producto],
-	    			                'method' => 'delete', 'class' => 'form-inline']) !!}
-
-	    				<button class="btn btn-danger" type="submit">
-	    					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-	    					Eliminar
-	    				</button>
-	    			{!! Form::close() !!}
+	    			<a href="#" onclick="deleteModel()" type="button" class="btn btn-danger">
+	    				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+	    				Eliminar
+	    			</a>
   				</div>
+  				{!! Form::open(['route' => ['admin.productos.destroy', $producto],
+	    			            'method' => 'delete', 'class' => 'form-hidden']) !!}
+            	{!! Form::close() !!}
 	    	</td>
 	  	</tr>
 		@endforeach

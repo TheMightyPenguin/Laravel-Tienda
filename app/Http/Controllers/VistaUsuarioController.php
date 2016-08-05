@@ -14,6 +14,15 @@ use App\Http\Requests;
 
 class VistaUsuarioController extends Controller
 {
+    
+    public function __construct() {
+        // $this->middleware('auth');
+    }
+
+    public function login() {
+        return view('auth.login');
+    }
+
     public function inicio() {
     	$productos = Producto::paginate(12);
 

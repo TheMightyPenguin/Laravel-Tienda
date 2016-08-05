@@ -22,38 +22,20 @@ Route::get('productos', 'VistaUsuarioController@productos');
 Route::get('contacto', 'VistaUsuarioController@contacto');
 Route::get('nosotros', 'VistaUsuarioController@nosotros');
 
-Route::group(['prefix' => 'admin'], function() {
-	Route::get('/', function(){
-		return view('admin.layout');
-	})->name('main');
+Route::get('ingresar', 'VistaUsuarioController@registro');
+Route::get('registro', 'VistaUsuarioController@registro');
+
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
+	Route::get('/', 'AdminController@index')->name('main');
 
 	Route::resource('estatus', 'EstatusController');
-	Route::get('estatus/{id}/eliminar', 'EstatusController@eliminar')->name('admin.estatus.eliminar');
-
 	Route::resource('usuarios', 'UsuariosController');
 	Route::resource('productos', 'ProductosController');
 });
 
-Route::get('admin', function() {
-	return view('admin.layout');
+Route::group(['prefix' => 'auth'], function() {
+	Route::auth();
 });
 
-Route::get('prueba', function() {
-	$usuarios = Usuario::all();
-	$usuario2 = Usuario::findOrFail(2);
-	$drFreddie = Usuario::where('name', '=' , 'Dr. Freddie Fadel MD');
 
-	// dd($usuario2);
-	dd($usuario2);
-
-	return view('prueba', compact('usuarios', 'usuario2'));
-});
-
-Route::get('usertest', function() {
-	$usuarios = Usuario::all();
-	return view('usertest', compact('usuarios'));
-});
-
-Route::get('form', function(){
-	return view('prueba');
-})->name('form');
+Route::get('/home', 'HomeController@index');

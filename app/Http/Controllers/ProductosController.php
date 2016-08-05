@@ -108,7 +108,13 @@ class ProductosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, $this->rules);
+
+        $data = $request->all();
+        Producto::find($id)->update($data);
+        
+        return redirect()->to(route('admin.productos.index'))
+                         ->with('mensaje', 'Producto registrado correctamente');
     }
 
     /**
@@ -119,7 +125,11 @@ class ProductosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto = Producto::findOrFail($id);
+        $producto->delete();
+
+        return redirect()->to(route('admin.productos.index'))
+                         ->with('mensaje', 'Producto eliminado correctamente');
     }
 
     private function setProductos()
