@@ -1,4 +1,4 @@
 
-function deleteModel() {
-	$()
+function deleteModel(id) {
+	$('#form-' + id).submit();
 }

@@ -22,14 +22,14 @@ class UsuariosTableSeeder extends Seeder
             });
 
         Usuario::create(['nombre' => "Victor",
-                        'apellido' => "Tortolero", 
-                        'email' => "test@test.com",
-                        'telefono' => "04124503477",
-                        'password' => bcrypt('1234'),
-                        'idestatus' => 1,
-                        'idtipousuario' => 1,
-                        'idubicacion' => 1,
-                        'remember_token' => str_random(10)
+                         'apellido' => "Tortolero", 
+                         'email' => "test@test.com",
+                         'telefono' => "04124503477",
+                         'password' => bcrypt('1234'),
+                         'idestatus' => 1,
+                         'idtipousuario' => 1,
+                         'idubicacion' => 1,
+                         'remember_token' => str_random(10)
         ]);
     }
 }

@@ -30,6 +30,14 @@ class ProductosController extends Controller
                     ['productos' => $this->productos]);
     }
 
+    public function search($name)
+    {
+        $productos = Producto::where('nombre', 'LIKE', '%'.$name.'%')->get();
+
+        return view('admin.productos.table',
+                    compact('productos'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -77,7 +85,10 @@ class ProductosController extends Controller
      */
     public function show($id)
     {
-        //
+        $producto = Producto::with('categoria', 'marca', 'estatus', 'tipoProducto', 'usuario')
+                            ->findOrFail($id);
+        return view('admin.productos.show',
+                    compact('producto'));
     }
 
     /**

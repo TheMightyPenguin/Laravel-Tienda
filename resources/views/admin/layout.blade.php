@@ -67,6 +67,8 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
+    <script src="{{ asset('js/ajax_admin_modal.js') }}"></script>
+    <script src="{{ asset('js/ajax_table.js') }}"></script>
 
     <!-- Menu Toggle Script -->
     <script>

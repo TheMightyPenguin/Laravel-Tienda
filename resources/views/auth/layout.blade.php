@@ -43,6 +43,7 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
+    
 
 </body>
 

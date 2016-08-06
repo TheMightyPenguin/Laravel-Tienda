@@ -31,11 +31,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
 	Route::resource('estatus', 'EstatusController');
 	Route::resource('usuarios', 'UsuariosController');
 	Route::resource('productos', 'ProductosController');
+
+	Route::get('productos/buscar/{name}', 'ProductosController@search');
 });
 
 Route::group(['prefix' => 'auth'], function() {
 	Route::auth();
 });
-
 
 Route::get('/home', 'HomeController@index');
